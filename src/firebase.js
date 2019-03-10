@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyB6lIUfV-i59_21rg3hCTMicBp4Mue_esM",
-    authDomain: "project-2019-c3259.firebaseapp.com",
-    databaseURL: "https://project-2019-c3259.firebaseio.com",
-    projectId: "project-2019-c3259",
-    storageBucket: "project-2019-c3259.appspot.com",
-    messagingSenderId: "798918317621"
+    apiKey: '' || new Error('add your app config'),
+    authDomain: '' || new Error('add your app config'),
+    databaseURL: '' || new Error('add your app config'),
+    projectId: '' || new Error('add your app config'),
+    storageBucket: '' || new Error('add your app config'),
+    messagingSenderId: '' || new Error('add your app config'),
   };
 
 export const FireApp = initializeApp(config);
