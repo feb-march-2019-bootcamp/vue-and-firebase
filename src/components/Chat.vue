@@ -4,9 +4,15 @@
       <li v-for="m in messages"
         class="list-group-item"
         :class="{'list-group-item-primary': m.from === me}"
-        v-text="m.text"
-       :key="m.id">
-
+        :key="m.id">
+        <div class="row">
+          <div class="col-8">
+            <span v-text="m.text"></span>
+          </div>
+          <div class="col-4">
+            <small v-text="formatTime(m.time)"></small>
+          </div>
+        </div>
       </li>
     </ul>
     <div class="form-group">
@@ -21,6 +27,8 @@
   </div>
 </template>
 <script>
+import moment from 'moment';
+
 export default {
   props: {
     messages: {type: Array},
@@ -29,6 +37,12 @@ export default {
   },
   data: () => ({
     newMessage: ''
-  })
+  }),
+  methods: {
+    formatTime(time) {
+      return moment(time.toDate()).fromNow();
+      
+    }
+  }
 }
 </script>
