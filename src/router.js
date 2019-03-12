@@ -9,4 +9,6 @@ const routes = [
 
 export const router = new Router({
   routes,
+  mode: 'history',
+  linkActiveClass: 'active'
 })
