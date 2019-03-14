@@ -1,5 +1,5 @@
 <template>
-  <form name="contact" action="/" method="POST" data-netlify="true">
+  <form name="contact" @submit.prevent="submit()" action="/" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="contact">
 
     <div class="form-group">
@@ -35,14 +35,16 @@ export default {
     submit() {
       Axios.post(
         "/",
-        this.encode({
+        // this.encode(
+          {
           "form-name": "contact",
           name: this.name,
           message: this.message
-        }),
-        {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }
+        // ),
+        // {
+        //   headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        // }
       )
         .then(() => {
           alert("success");
