@@ -4,11 +4,11 @@
 
     <div class="form-group">
       Name:
-      <input type="text" name="name" id="name" class="form-control">
+      <input type="text" name="name" v-model="name" id="name" class="form-control">
     </div>
     <div class="form-group">
       Message:
-      <textarea name="message" id cols="30" rows="10" class="form-control"></textarea>
+      <textarea name="message" v-model="message" id cols="30" rows="10" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
