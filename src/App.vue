@@ -15,6 +15,9 @@
             <router-link to="/messenger" class="nav-link">
               Messenger
             </router-link>
+            <router-link to="/contact" class="nav-link">
+              Contact
+            </router-link>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
