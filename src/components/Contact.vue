@@ -30,12 +30,10 @@ export default {
     },
     submit() {
       fetch(
+        "/",
         {
-          url: "/",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           method: "post",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        },
-        {
           body: this.encode({
             "form-name": "contact",
             name: this.name,
@@ -46,7 +44,8 @@ export default {
         .then(() => {
           alert("success");
         })
-        .catch(() => {
+        .catch(e => {
+          console.log(e)
           alert("fail");
         });
     }
