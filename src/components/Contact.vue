@@ -1,5 +1,5 @@
 <template>
-  <form name="contact" action="/" method="POST" data-netlify="true">
+  <form name="contact" @submit.prevent="submit()" action="/" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact" />
 
       <div class="form-group">
@@ -16,6 +16,28 @@
 </template>
 <script>
 export default {
-  
+  data: () => ({
+    name: '',
+    message: ''
+  }),
+  methods: {
+    submit() {
+      fetch({
+        url: '/',
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }, {body: {
+        'form-name': 'contact',
+        name: this.name,
+        message: this.message
+      }}).then(() => {
+        alert('success')
+      }).catch(() => {
+        alert('fail')
+      })
+    }
+  }
 }
 </script>
