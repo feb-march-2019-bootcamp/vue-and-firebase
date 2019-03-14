@@ -2,10 +2,12 @@
   <form name="contact" @submit.prevent="submit()" action="/" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="contact">
 
-    <div class="form-group">Name:
+    <div class="form-group">
+      Name:
       <input type="text" name="name" id="name" class="form-control">
     </div>
-    <div class="form-group">Message:
+    <div class="form-group">
+      Message:
       <textarea name="message" id cols="30" rows="10" class="form-control"></textarea>
     </div>
 
@@ -15,6 +17,8 @@
   </form>
 </template>
 <script>
+import Axios from "axios";
+
 export default {
   data: () => ({
     name: "",
@@ -29,23 +33,22 @@ export default {
         .join("&");
     },
     submit() {
-      fetch(
+      Axios.post(
         "/",
+        this.encode({
+          "form-name": "contact",
+          name: this.name,
+          message: this.message
+        }),
         {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          method: "post",
-          body: this.encode({
-            "form-name": "contact",
-            name: this.name,
-            message: this.message
-          })
+          headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }
       )
         .then(() => {
           alert("success");
         })
         .catch(e => {
-          console.log(e)
+          console.log(e);
           alert("fail");
         });
     }
