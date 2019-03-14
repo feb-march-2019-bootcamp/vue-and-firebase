@@ -21,18 +21,24 @@ export default {
     message: ''
   }),
   methods: {
+    encode (data) {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&");
+    },
     submit() {
       fetch({
         url: '/',
         method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }, {body: {
-        'form-name': 'contact',
-        name: this.name,
-        message: this.message
-      }}).then(() => {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      }, { body: 
+        this.encode({
+          'form-name': 'contact',
+          name: this.name,
+          message: this.message
+        }).then(() => {
         alert('success')
       }).catch(() => {
         alert('fail')
